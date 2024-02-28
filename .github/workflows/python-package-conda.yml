@@ -47,4 +47,4 @@ jobs:
       - name: Install MkDocs dependencies
         run: pip install -r requirements.txt
       - name: Deploy with MkDocs
-        run: mkdocs gh-deploy --force --message "chore: update docs"
+        run: mkdocs gh-deploy --force --message "chore: update docs" 
