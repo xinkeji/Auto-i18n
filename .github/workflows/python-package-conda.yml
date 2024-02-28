@@ -32,17 +32,11 @@ jobs:
         run: |
           pip install -r requirements.txt
           python auto-translater.py || true
-      - name: Commit translated
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Commit translated" || true
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - name: 使用 Hugo 重建静态站点
+        run: hugo -d docs
+
+      - name: Commit and push changes to ecrivai-blog-hugo
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install MkDocs dependencies
-        run: pip install -r requirements.txt
-      - name: Deploy with MkDocs
-        run: mkdocs gh-deploy --force
+          commit_message: Auto add blog post
+          repository: .
