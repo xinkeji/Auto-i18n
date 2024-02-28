@@ -23,6 +23,7 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Change permissions
         run: 
+           pip install mkdocs
            mkdir docs
 
            chmod 755 docs
