@@ -1,13 +1,10 @@
 name: ci
-
 on:
   push:
     branches:
       - main
-
 permissions:
   contents: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,7 +30,9 @@ jobs:
           CHATGPT_API_BASE: ${{ secrets.CHATGPT_API_BASE }}
         run: |
           pip install -r requirements.txt
-          python auto-translater.py
+          python auto-translater.py || true
+
+
       - name: Commit translated
         run: |
           git config --global user.name 'github-actions[bot]'
