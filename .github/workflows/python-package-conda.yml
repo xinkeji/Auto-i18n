@@ -25,12 +25,12 @@ jobs:
       run: python auto-translater.py ${{ secrets.CHATGPT_API_BASE }} ${{ secrets.CHATGPT_API_KEY }} 
 
     - name: 设置 Git 配置
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: 提交新的博客文章
-        run: |
-          git add source/_posts/*
-          git commit -m "Add new posts via GitHub Actions" || echo "No new posts to commit."
-          git push origin main
+    - name: 提交新的博客文章
+      run: |
+        git add source/_posts/*
+        git commit -m "Add new posts via GitHub Actions" || echo "No new posts to commit."
+        git push origin main
