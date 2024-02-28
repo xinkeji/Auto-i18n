@@ -21,8 +21,8 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-      - name: Change permissions
-        run: chmod 755 docs
+      # - name: Change permissions
+      #   run: chmod 755 docs
       - name: Auto-i18n_translate
         env:
           # 设置环境变量
